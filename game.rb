@@ -1,8 +1,10 @@
 require 'tty'
+require_relative 'card'
+require_relative 'deck'
 
 class Game
 
-  attr_accessor :p1_card, :p2_card
-
+p1 = Deck.new
+p2 = Deck.new
 
 end

@@ -1,20 +1,33 @@
 require 'minitest/autorun'
+require_relative 'deck'
 
+class DeckTest < MiniTest::Test
 
-def test_a_deck_has_52_cards
-end
+  def setup
+    @tdeck = Deck.new
+  end
 
-def test_a_deck_contains_13_of_each_suit
-end
+  def test_a_deck_has_52_cards
+    assert @tdeck.deck.length == 52
+  end
 
-def test_a_deck_contains_4_of_each_face_of_cards
-end
+  def test_a_deck_contains_13_of_each_suit
+    assert @tdeck.deck.select{|card| card.suit == "Hearts"}.count == 13
+  end
 
-def test_a_deck_is_shuffled_on_creation
-end
+  def test_a_deck_contains_4_of_each_face_of_cards
+    assert @tdeck.deck.select{|card| card.face == "4"}.count == 4
+  end
 
-def test_a_deck_can_be_drawn
-end
+  def test_a_deck_is_shuffled_on_creation
+    refute Deck.new == Deck.new
+  end
 
-def test_once_a_card_is_drawn_it_has_one_less_card
+  def test_a_deck_can_be_drawn
+    assert @tdeck.draw.is_a? Card
+  end
+
+  def test_once_a_card_is_drawn_it_has_one_less_card
+  end
+
 end
